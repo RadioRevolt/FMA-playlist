@@ -19,7 +19,7 @@ tracks/%.mp3 : downloaded_tracks/%.mp3
 	@# add 0.3 seconds of silence to the end.
 	@# See http://digitalcardboard.com/blog/2009/08/25/the-sox-of-silence/ for
 	@# an explaination of this command.
-	@sox $< $@ silence 1 0.1 0.1% reverse silence 1 0.1 0.1% reverse pad 0.0 0.3
+	@-sox $< $@ silence 1 0.1 0.1% reverse silence 1 0.1 0.1% reverse pad 0.0 0.3
 	@# Remove the file from the downloaded folder (no need to waste space)
 	@rm $<
 
@@ -37,7 +37,8 @@ configure : settings.py
 # Populate settings.py with the API_KEY.
 settings.py : 
 	@echo "To use the Free Music Archive API, you need to obtain an API key."
-	@echo "Visit https://freemusicarchive.org/api/agreement if you don't have one already."
+	@echo "However, such keys are not being given out any longer."
+	@echo "Check the wiki for our existing API key."
 	@echo 
 	@read -p "API key: " input; \
 	echo API_KEY = \"$$input\" > settings.py

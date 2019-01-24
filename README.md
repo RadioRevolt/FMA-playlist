@@ -30,10 +30,11 @@ somewhat familiar with Linux.
 
 5.  Run the program for the first time.
 
-    `make -i run`
+    `make run`
 
     You will first be prompted for an API key, which you can obtain by
     reading and agreeing to [FMA API ToS](https://freemusicarchive.org/api/agreement).
+    However, lately keys have not been given out, so check the "secrets" page on the wiki.
     The key will be saved to `settings.py` and will be reused on further runs.
     Create `settings.py` with the appropriate content _before_ running the program
     if you cannot use the prompt (e.g. during automated installation).
@@ -43,13 +44,13 @@ somewhat familiar with Linux.
     removed from either end of them before they're moved to `tracks/`.
 
 6.  Optional: to add new tracks as the search result changes over time, add
-    `make -i run` to your crontab.
+    `make run` to your crontab.
 
     `crontab -e`
 
     Add a line which runs `make run` once every month or so, like this:
 
-    `0 10 1 * * make -i -C /path/to/FMA-playlist run > /path/to/FMA-playlist/runlog.log 2>&1`
+    `0 10 1 * * make -C /path/to/FMA-playlist run > /path/to/FMA-playlist/runlog.log 2>&1`
 
     in which you replace `/path/to/FMA-playlist` with the actual path to this
     directory. (As a side note, you might want to remove the redirects if you want an
